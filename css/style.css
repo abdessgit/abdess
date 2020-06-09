@@ -1,0 +1,272 @@
+/* == DÉFINITIONS DES POLICES*/
+body
+{
+	font-family:sans-serif;
+}
+/*----------------------------------------*/
+/* == ÉLÉMENTS PRINCIPAUX */
+#bloc-page
+{
+	width: 90%;
+	margin: auto;
+}
+.images
+{
+	width: 100%;
+	height: auto;
+}
+
+/* ---------------------------------------- */
+/* ==            HEADER                */
+/*---------------------------------------- */
+/*==   L'en tete 		*/
+.en-tete
+{
+	text-align: center;
+	
+}
+.logo{
+	width: 250px;
+	height: 70px;
+	margin: auto;
+}
+.navb
+{
+	width: 90%;
+	margin: auto;
+	padding-top: 10px;
+}
+.navb h1
+{
+	font-size: 2rem;	
+}
+.navb span
+{
+	color: lightblue;
+}
+/* ---------------------------------------- */
+/* ==            SECTION  1              */
+/*---------------------------------------- */
+
+/*----------------------------------------*/
+/*     Slider      */
+.carousel-item img
+{
+	width: 100%;
+	height: auto;
+}
+.carousel-item
+{
+	width: 100%;
+	max-height: 550px;
+}
+.carousel-caption
+{
+	top: 2%;
+}
+.fas:hover
+{
+	color: black;
+	background-color: rgb(240, 240, 240);
+}
+.fas
+{
+	font-size: 2vw;
+	color: white;
+	padding: 0.4vw;
+	padding-left: 0.8vw;
+	padding-right: 0.8vw;
+	border-radius: 50%;
+	background-color: black;
+	opacity: 0.9;
+	cursor: pointer;
+}
+/*----------------------------------------*/
+/*     flech slider    */
+.carousel-control-prev:hover, .carousel-control-next:hover
+{
+	transform: scale(1);
+}
+.flech
+{
+	display: flex;
+	align-items: center;
+}
+.cercle{ 
+	top: 46%;
+    background-color: lightblue;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    opacity: 0.4;
+}
+/*----------------------------------------*/
+/* button pause et play */
+.fas
+{
+	font-size: 0.7em;
+	color: white;
+	width: 20px;
+	height:auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: black;
+	opacity: 0.9;
+	cursor: pointer;
+}
+
+.fas:hover
+{
+	color: black;
+	background-color: rgb(240, 240, 240);
+}
+/*----------------------------------------*/
+/*      caption     */
+.carousel-caption h3
+{
+	animation: text 1s ease forwards;
+	animation-delay: .5s;
+	opacity: 0;
+}
+@keyframes text {
+	0%{
+		opacity: 0;transform: translateX(100px);
+	}
+	100%{
+		opacity: 1;transform: translateX(0px);
+	}
+}	
+.carousel-caption h4
+{
+	animation: text 1s ease forwards;
+	animation-delay: .5s;
+	opacity: 0;
+}
+@keyframes text {
+	0%{
+		opacity: 1;transform: translateX(-100px);
+	}
+	100%{
+		opacity: 2;transform: translateX(0px);
+	}
+	50%{
+		opacity: 1;transform: translateX(200px);
+	}
+}	
+
+.d-block
+{
+	animation: apparition 1s ease;
+	-webkit-animation : apparition 1s ease;
+}
+/* ---------------------------------------- */
+/* ==            SECTION  2               */
+/*---------------------------------------- */
+
+#contenu
+{
+	display: flex;
+	justify-content: center;
+	flex-wrap: nowrap;
+	width: 80%;
+	margin: auto;
+	margin-top: 40px;
+}
+/*----------------------------------------*/
+	/*      bloc map         */
+#blocgauche
+{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	transition: 1s ease;
+}
+#blocmap
+{
+	height: 620px;
+	text-align: center;
+	width: 100%;
+	filter: brightness(90%);
+	-webkit-filter: brightness(90%);
+	border-radius: 20px;
+
+}
+
+#blocmap:hover
+{
+	filter: none;
+	-webkit-filter: none;
+}
+ .items img
+ {
+ 	width: 40px;
+ 	height:40px;
+ }
+
+
+@media all and (max-width:950px)
+{
+	.row
+	{
+		flex-direction: column;
+	}
+}
+/*----------------------------------------*/
+/*   	bloc formulaire de reservation   */ 
+#blocdroite
+{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	border-radius: 20px;
+	background-color: white;
+}
+#nom, #prenom
+{
+	background-color: rgb(237, 237, 237);
+	width: 90%;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	padding-left: 5%;
+	padding-right: 5%;
+	margin-bottom: 25px;
+	margin-right: auto;
+	margin-left: auto;
+	border-radius: 5px;
+	border-style: none;
+	font-family: 'Montserrat-SemiBold';
+}
+input:focus, input:required
+{
+	border: 1px double #4fdabf;
+	border-radius: 5px;
+}
+.boutonsresa
+{
+	width: 90%;
+	background-color: #872929;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-size: 1.2em;
+	text-transform: uppercase;
+	font-family: 'Montserrat-Light';
+	margin-top: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.boutonsresa:hover
+{
+	background-color: rgb(30, 30, 30);
+	font-family: 'Montserrat-Regular';
+}
+#reservation p:first-child {
+    font-family: 'Montserrat-SemiBold';
+    color: #872929;
+    text-transform: uppercase;
+    font-size: 1.4em;
+}

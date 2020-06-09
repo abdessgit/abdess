@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+    <html lang="fr">
+        <head>
+            <meta charset="UTF-8" />
+            <title>Réservez votre vélo en libre service à Toulouse</title>
+            <meta name="description" content="Consultez notre carte de location de vélos sur Toulouse et réservez votre vélo dans la station la plus proche" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta name="twitter:card" content="summary" />
+            <!-- <meta name="twitter:site" content="@location_velo_toulouse" /> -->
+            <meta property="og:url" content="http://location-velo-toulouse.pablobuisson.fr/" />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="Réservez votre vélo en libre service à Toulouse" />
+            <meta property="og:description" content="Consultez notre carte de location de vélos sur Toulouse et réservez votre vélo dans la station la plus proche" />
+            <meta property="og:image" content="http://location-velo-toulouse.pablobuisson.fr/img/carte-location-velo-fb.jpg" />
+            <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+            <link rel="stylesheet" href="css/style.css" />
+            <link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+            <script type='application/ld+json'> 
+                {
+                "@context": "http://www.schema.org",
+                "@type": "WebSite",
+                "name": "Réservez votre vélo en libre service à Toulouse",
+                "url": "http://location-velo-toulouse.pablobuisson.fr/"
+                }
+ 		    </script>
+        </head>
+
+        <body>
+            <div id="bloc_page">
+
+                <h1>Réservez votre vélo en libre service à Toulouse</h1>
+
+                <!-- BLOC SLIDER -->
+                <div id="slider_container">
+                    <div class="slide"><svg class="slide_background"></svg><svg class="slide_svg"></svg><p class="slide_text"><span>1</span> Sélectionnez votre station</p><img src="img/carte-stations-velos-toulouse.jpg" alt="Une carte des stations de vélos à Toulouse"/></div>
+                    <div class="slide"><svg class="slide_background"></svg><svg class="slide_svg"></svg><p class="slide_text"><span>2</span> Effectuez votre réservation</p><img src="img/reservation-velo-site-web.jpg" alt="Réservez votre vélo en remplissant le formulaire de notre site web"/></div>
+                    <div class="slide"><svg class="slide_background"></svg><svg class="slide_svg"></svg><p class="slide_text"><span>3</span> Récupérez votre vélo !</p><img src="img/location-velo-ville.jpg" alt="Récupérez votre vélo après votre réservation en ligne"/></div>
+                    <!-- boutons précédent, suivant et pause -->
+                    <a href="#void" id="slider_prev" title="Slide précédente"><span class="fas fa-angle-left"></span></a>
+                    <a href="#void" id="slider_next" title="Slide suivante"><span class="fas fa-angle-right"></span></a>
+                    <a href="#void" id="slider_pause" title="Pause/Reprendre"><span class="fas fa-pause"></span></a>
+                    <!-- barre de progression -->
+                    <div id="timeline_container"><div class="timeline" data-percent="100%"></div></div>
+                    <!-- les points sous le slider -->
+                    <div id="slider_dots">
+                        <a href="#void" class="dot firstdot" title="Première slide"></a>
+                        <a href="#void" class="dot seconddot" title="Seconde slide"></a>
+                        <a href="#void" class="dot thirddot" title="Dernière slide"></a>
+                    </div>
+                </div>
+
+                <h2>Cliquez sur la station de votre choix</h2>
+
+                <!-- BLOC MAP FORMULAIRE CANVAS-->
+                <div id="map_container">
+
+                    <div id="map"></div> <!-- Div de la carte -->
+
+                    <div id="form_container"> <!-- Div de l'encart de réservation -->
+                        <div id="before_form" class="presentation">
+                            <p id="before_click">Cliquez sur la station de votre choix pour afficher les informations et réserver votre vélo !</p>
+                            <ul>
+                                <li id="station_verte">Station verte : plus de 10 vélos disponibles</li>
+                                <li id="station_orange">Station orange : moins de 10 vélos disponibles</li>
+                                <li id="station_rouge">Station rouge : aucun vélo disponible</li>
+                            </ul>
+                        </div>
+                        <div id="station_infos">
+                            <p>Adresse : </p>
+                            <p>Nombre de places : </p>
+                            <p>Nombre de vélos disponibles : </p>
+                        </div>
+                        <form id="form_bikes"> <!-- FORMULAIRE method="post" action="formulaire.php" -->
+                            <fieldset>
+                                <legend>Réservez un vélo de cette station</legend>
+                                <label for="name">Votre nom : </label><input type="text" name="name" id="name" placeholder="Votre nom" required/><br />
+                                <label for="firstname"> Votre prénom : </label><input type="text" name="firstname" id="firstname" placeholder="Votre prénom" required><br />
+                                <input type="submit" name="submit" id="reservation" value="Réservez !">
+                            </fieldset>
+                        </form>
+                        <p id="nobikes">Réservation impossible (aucun vélo disponible)</p>
+                    </div>
+
+                    <div id="canvas_container"> <!-- Div du Canvas -->
+                        <div id="canvas_message">
+                            <p>Signez dans la case pour confirmer :</p>
+                        </div>
+                        <div id="canvas_div">
+                            <canvas id="canvas_resa" width="200" height="200">Apposez votre signature (si vous voyez ce message, votre navigateur n'est pas à jour)</canvas>
+                        </div>
+                        <div id="canvas_confirm">
+                            <button type="submit" id="submit_canvas">Validez !</button>
+                            <button type="reset" id="clear_canvas">Recommencez</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--BLOC MESSAGES DE CONFIRMATION / EXPIRATION -->
+                <p id="form_confirm">Vélo réservé à la station <span id="confirm_station">STATION</span> par <span id="confirm_name">NAME</span><br />
+                    Temps restant : <span id="timer"></span> avant l'expiration de la session</p>
+                <p id="form_exp">Réservation expirée</p>
+
+                <footer>
+                    <p>Site réalisé dans le cadre de la formation OpenClassrooms</p>
+                    <p>Réalisation : <a href="https://www.pablobuisson.fr/" title="pablobuisson.fr">Pablo Buisson</a></p>
+                </footer>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
+
+                <script src="js/slider.js"></script>
+                <script src="js/map.js"></script>
+                <script src="js/resa.js"></script>
+                <script src="js/canvas.js"></script>
+                <script src="js/main.js"></script>
+            </div>
+        </body>
+    </html>
